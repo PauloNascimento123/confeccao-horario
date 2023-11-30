@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construção de Horários</title>
+
+    <!-- Folha de Estilos para Excel (SheetJS) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.full.min.js"></script>
+
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <script type="module" src="./js/professores.js"></script>
+    <script type="module" src="./js/disciplina.js"></script>
+    <script src="./js/mudarPagina.js"></script>
+    <script src="./js/exportarArquivos.js"></script>    
+
+</head>
+
+<body>
+
+    <nav id="painelPeriodos">
+        <strong>PERÍODOS</strong><br>
+        <a href="periodo1.html">1º PERÍODO</a>
+        <a href="periodo2.html">2º PERÍODO</a>
+        <a href="periodo3.html">3º PERÍODO</a>
+        <a href="periodo4.html">4º PERÍODO</a>
+        <a href="periodo5.html">5º PERÍODO</a>
+        <a href="periodo6.html">6º PERÍODO</a>
+        <a href="periodo7.html">7º PERÍODO</a>
+        <a href="periodo8.html">8º PERÍODO</a>
+        <a href="periodo9.html">9º PERÍODO</a>
+        <a href="periodo10.html">10º PERÍODO</a>
+    </nav>
+
+    <main class="container">
+
+        <div id="periodo1">
+
+            <div id="box1">
+            
+    
+                <div class="professores">
+                    <strong>REGISTRAR DOCENTE:</strong>
+                    <br>
+                    <label for="professor">DOCENTE: </label>
+                    <input type="text" name="professor" id="professor" style="text-transform: uppercase;">
+                    <button type="button" id="registrarProfessor">Registrar Docente</button>
+                    <br>
+                    <button type="button" id="removerProfessorId">Remover Docente</button>
+                    <br>
+                    <label for="listaDeProfessores">Lista de Docentes: </label>
+                    <select id="listaDeProfessoresOpcoes" name="listaDeProfessoresOpcoes"></select>
+                    <br>
+                    <label for="horariosBloqueados">Horários Bloqueados: </label>
+                    <select id="diasBloqueados" name="diasBloqueados">
+                        <option value=""></option>
+                        <option value="segunda">Segunda</option>
+                        <option value="terca">Terça</option>
+                        <option value="quarta">Quarta</option>
+                        <option value="quinta">Quinta</option>
+                        <option value="sexta">Sexta</option>
+                        <option value="sabado">Sábado</option>
+                        <option value="domingo">Domingo</option>
+                    </select>
+                    <select id="horasBloqueadas" name="horasBloqueadas">
+                        <option value=""></option>
+                        <option value="todos">Todos</option>
+                        <option value="07:00">07:00</option>
+                        <option value="08:00">08:00</option>
+                        <option value="09:00">09:00</option>
+                        <option value="10:00">10:00</option>
+                        <option value="11:00">11:00</option>
+                        <option value="12:00">12:00</option>
+                        <option value="13:00">13:00</option>
+                        <option value="14:00">14:00</option>
+                        <option value="15:00">15:00</option>
+                        <option value="16:00">16:00</option>
+                        <option value="17:00">17:00</option>
+                        <option value="18:00">18:00</option>
+                        <option value="19:00">19:00</option>
+                        <option value="20:00">20:00</option>
+                        <option value="21:00">21:00</option>
+                        <option value="22:00">22:00</option>
+                    </select>
+                    <button type="button" id="adicionarHorarioBloqueado">Adicionar Bloqueio</button>
+                    <span><button type="button" id="desfazerUltimoBloqueio">Desfazer Bloqueio</button></span>
+                    <div id="painelProfessores">
+                        <strong>Horários Bloqueados: </strong>
+                        <div id="painelHorariosBloqueados" style="height: 180px; display: grid; grid-template-columns: repeat(3, 1fr); overflow-y: auto;">
+                        </div>
+                        
+                        <button id="limparProfessoresEDisciplinas">LIMPAR TODOS OS DADOS DESSE PERÍODO</button>
+                    </div>
+                    
+                </div>
+    
+                <div id="formulario">
+                    <strong>CRIAR DISCIPLINA</strong>
+                    <form action="" method="post">
+                        <label for="nome">Nome da Disciplina: </label>
+                        <input type="text" name="nome" id="nomeDaDisciplina" style="text-transform: uppercase;">
+                        <input type="submit" value="Criar Disciplina" id="criarDisciplina">
+                        <br>
+                        <label for="disciplinas">Disciplinas: </label>
+                        <select id="disciplinasOpcoes" name="disciplinasOpcoes"></select>
+                        <br>
+                        <button type="button" id="RemoverDisciplinaId">Remover Disciplina</button>
+                        <br>
+                        <label for="horarios">Horários: </label>
+                        <select id="dias" name="dias">
+                            <option value=""></option>
+                            <option value="segunda">Segunda</option>
+                            <option value="terca">Terça</option>
+                            <option value="quarta">Quarta</option>
+                            <option value="quinta">Quinta</option>
+                            <option value="sexta">Sexta</option>
+                            <option value="sabado">Sábado</option>
+                            <option value="domingo">Domingo</option>
+                        </select>
+                        <select id="horas" name="horas">
+                            <option value=""></option>
+                            <option value="07:00">07:00</option>
+                            <option value="08:00">08:00</option>
+                            <option value="09:00">09:00</option>
+                            <option value="10:00">10:00</option>
+                            <option value="11:00">11:00</option>
+                            <option value="12:00">12:00</option>
+                            <option value="13:00">13:00</option>
+                            <option value="14:00">14:00</option>
+                            <option value="15:00">15:00</option>
+                            <option value="16:00">16:00</option>
+                            <option value="17:00">17:00</option>
+                            <option value="18:00">18:00</option>
+                            <option value="19:00">19:00</option>
+                            <option value="20:00">20:00</option>
+                            <option value="21:00">21:00</option>
+                            <option value="22:00">22:00</option>
+                        </select>
+                        <button type="button" id="adicionarHorario">Adicionar Horário</button>
+                        <br>
+                        <button type="button" id="retirarUltimoHorario">Remover Horário</button>
+                        <br>
+                        <label for="professorResponsavel">Docente Responsável: </label>
+                        <select id="professorResponsavelOpcoes" name="professorOpcoes"></select>
+                        <button type="button" id="adicionarResponsavelid">Adicionar Responsável</button>
+                        <br>
+                        <button type="button" id="removerResponsavelid">Remover Responsável</button>
+                        <br>
+                    </form>
+    
+                    <div id="PainelDisciplinas">
+                        <strong>Disciplinas Registradas:</strong>
+                        <div id="listaDisciplinas" style="display: grid; grid-template-columns: 25% 25% 25% 25%; font-size: 70%; height: 140px;">
+                        </div>
+                    </div> 
+                    
+                </div>
+    
+                <div id="ocorrencias">
+                    <strong>OCORRÊNCIAS</strong>
+                </div>
+            
+            </div>
+            
+            <div id="tabela";>
+                <table class="horario" id="tabelaInteira">
+                    <caption style="padding: 1% 0% 1% 0%; border: solid rgb(0,0,0); color: blue;">
+                        <strong>Tabela de Horário - 4º Período</strong>
+                    <thead>
+                        <tr>
+                            <th scope="col">Horário</th>
+                            <th scope="col"><abbr title="domingo">Domingo</abbr></th>
+                            <th scope="col"><abbr title="segunda">Segunda</abbr></th>
+                            <th scope="col"><abbr title="terça">Terça</abbr></th>
+                            <th scope="col"><abbr title="quarta">Quarta</abbr></th>
+                            <th scope="col"><abbr title="quinta">Quinta</abbr></th>
+                            <th scope="col"><abbr title="sexta">Sexta</abbr></th>
+                            <th scope="col"><abbr title="sábado">Sábado</abbr></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelaCorpo">
+                        <tr name="07:00">
+                            <td scope="row">07:00</td>
+                            <td name="domingo"></td>
+                            <td name="segunda"></td>
+                            <td name="terca"></td>
+                            <td name="quarta"></td>
+                            <td name="quinta"></td>
+                            <td name="sexta"></td>
+                            <td name="sabado"></td>
+                        </tr>
+                        <tr name="08:00">
+                            <td scope="row">08:00</td>
+                            <td name="domingo"></td>
+                            <td name="segunda"></td>
+                            <td name="terca"></td>
+                            <td name="quarta"></td>
+                            <td name="quinta"></td>
+                            <td name="sexta"></td>
+                            <td name="sabado"></td>
+                        </tr>
+                        <tr name="09:00">
+                            <td scope="row">09:00</td>
+                            <td name="domingo"></td>
+                            <td name="segunda"></td>
+                            <td name="terca"></td>
+                            <td name="quarta"></td>
+                            <td name="quinta"></td>
+                            <td name="sexta"></td>
+                            <td name="sabado"></td>
+                        </tr>
+                        <tr name="10:00">
+                            <td scope="row">10:00</td>
+                            <td name="domingo"></td>
+                            <td name="segunda"></td>
+                            <td name="terca"></td>
+                            <td name="quarta"></td>
+                            <td name="quinta"></td>
+                            <td name="sexta"></td>
+                            <td name="sabado"></td>
+                        </tr>
+                        <tr name="11:00">
+                            <td scope="row">11:00</td>
+                            <td name="domingo"></td>
+                            <td name="segunda"></td>
+                            <td name="terca"></td>
+                            <td name="quarta"></td>
+                            <td name="quinta"></td>
+                            <td name="sexta"></td>
+                            <td name="sabado"></td>
+                        </tr>
+                        <tr name="12:00">
+                            <td scope="row">12:00</td>
+                            <td name="domingo"></td>
+                            <td name="segunda"></td>
+                            <td name="terca"></td>
+                            <td name="quarta"></td>
+                            <td name="quinta"></td>
+                            <td name="sexta"></td>
+                            <td name="sabado"></td>
+                        </tr>
+                        <tr name="13:00">
+                            <td scope="row">13:00</td>
+                            <td name="domingo"></td>
+                            <td name="segunda"></td>
+                            <td name="terca"></td>
+                            <td name="quarta"></td>
+                            <td name="quinta"></td>
+                            <td name="sexta"></td>
+                            <td name="sabado"></td>
+                        </tr>
+                        <tr name="14:00">
+                            <td scope="row">14:00</td>
+                            <td name="domingo"></td>
+                            <td name="segunda"></td>
+                            <td name="terca"></td>
+                            <td name="quarta"></td>
+                            <td name="quinta"></td>
+                            <td name="sexta"></td>
+                            <td name="sabado"></td>
+                        </tr>
+                        <tr name="15:00">
+                            <td scope="row">15:00</td>
+                            <td name="domingo"></td>
+                            <td name="segunda"></td>
+                            <td name="terca"></td>
+                            <td name="quarta"></td>
+                            <td name="quinta"></td>
+                            <td name="sexta"></td>
+                            <td name="sabado"></td>
+                        </tr>
+                        <tr name="16:00">
+                            <td scope="row">16:00</td>
+                            <td name="domingo"></td>
+                            <td name="segunda"></td>
+                            <td name="terca"></td>
+                            <td name="quarta"></td>
+                            <td name="quinta"></td>
+                            <td name="sexta"></td>
+                            <td name="sabado"></td>
+                        </tr>
+                        <tr name="17:00">
+                            <td scope="row">17:00</td>
+                            <td name="domingo"></td>
+                            <td name="segunda"></td>
+                            <td name="terca"></td>
+                            <td name="quarta"></td>
+                            <td name="quinta"></td>
+                            <td name="sexta"></td>
+                            <td name="sabado"></td>
+                        </tr>
+                        <tr name="18:00">
+                            <td scope="row">18:00</td>
+                            <td name="domingo"></td>
+                            <td name="segunda"></td>
+                            <td name="terca"></td>
+                            <td name="quarta"></td>
+                            <td name="quinta"></td>
+                            <td name="sexta"></td>
+                            <td name="sabado"></td>
+                        </tr>
+                        <tr name="19:00">
+                            <td scope="row">19:00</td>
+                            <td name="domingo"></td>
+                            <td name="segunda"></td>
+                            <td name="terca"></td>
+                            <td name="quarta"></td>
+                            <td name="quinta"></td>
+                            <td name="sexta"></td>
+                            <td name="sabado"></td>
+                        </tr>
+                        <tr name="20:00">
+                            <td scope="row">20:00</td>
+                            <td name="domingo"></td>
+                            <td name="segunda"></td>
+                            <td name="terca"></td>
+                            <td name="quarta"></td>
+                            <td name="quinta"></td>
+                            <td name="sexta"></td>
+                            <td name="sabado"></td>
+                        </tr>
+                        <tr name="21:00">
+                            <td scope="row">21:00</td>
+                            <td name="domingo"></td>
+                            <td name="segunda"></td>
+                            <td name="terca"></td>
+                            <td name="quarta"></td>
+                            <td name="quinta"></td>
+                            <td name="sexta"></td>
+                            <td name="sabado"></td>
+                        </tr>
+                        <tr name="22:00">
+                            <td scope="row">22:00</td>
+                            <td name="domingo"></td>
+                            <td name="segunda"></td>
+                            <td name="terca"></td>
+                            <td name="quarta"></td>
+                            <td name="quinta"></td>
+                            <td name="sexta"></td>
+                            <td name="sabado"></td>
+                        </tr>
+                        
+                    </tbody>
+                    
+                </table>
+    
+                <div id="anotacoes"><strong>ANOTAÇÕES:</strong>
+                    <label for="anotacoes"></label>
+                    <br>
+                    <textarea id="anotacoesTexto" rows="8" cols="30" style="width: 95%; height: 90%;"></textarea>
+                </div>
+    
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer style="display: fixed; padding: 1%; text-align: center;">
+        <button style="padding: 1%;" onclick="gerarXlsx()">GERAR HORÁRIO (Excel)</button>
+        <button id="gerarDesignacao" style="padding: 1%; margin-left: 1%;">GERAR DESIGNAÇÃO (Excel)</button>
+        <button id="salvarExterno" style="padding: 1%; margin-left: 1%;">Salvar em arquivo Externo</button> <span></span>
+        <button id="carregarExterno" style="padding: 1%; margin-left: 1%;">Carregar arquivo Externo</button>
+        <br><br>
+        Autor: Paulo Henrique do Nascimento
+        
+        
+    </footer>
+
+
+    <div id="tabelasSalvas">
+
+
+    </div>
+</body>
+
+</html>

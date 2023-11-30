@@ -1,0 +1,192 @@
+body {
+    background-color: rgb(185, 185, 185);
+    width: 100vw;
+    height: auto; 
+    margin: 0;
+    padding: 0; 
+}
+
+/* Cria um pseudo-elemento que será inserido após o conteúdo do elemento main. */
+main::after {
+    content: ""; /* Esvazia o conteúdo da TAG main. */
+    position: flex; /* Define a posição do pseudo-elemento como fixa. Isso siginifica que o elemento será posicionado em relação à janela do navegador, e não ao elemento pai. */
+    height: auto; /* Define a altura mínima do pseudo-elemento como 100% da altura da janela visível (vh significa "viewport height"). Isso fará com que o pseudo-elemento tenha pelo menos a altura da tela do dispositivo. */
+    width: 100%; 
+    top: 0;
+    left: 0;
+}
+
+#painelPeriodos a.selecionado {
+    font-weight: bold; /* Deixa o texto em negrito */
+    color: blue; /* Altera a cor do texto para vermelho (pode ser ajustado conforme necessário) */
+}
+
+#painelPeriodos {
+    min-width: 1480px;
+    width: auto;
+    height: 5%;
+    padding: 1% 1.5% 1% 1.5%;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+
+#box1 {
+    /* outline: solid rgb(0, 0, 0); */
+    /* margin-top: 2%; */
+    display: flex;
+    min-width: 1480px;
+    width: 100vw;
+    height: 440px;
+    background-color: rgb(200, 200, 200);
+}
+
+.professores {
+    border: solid rgb(0,0,0);
+    width: 30%;
+    line-height: 1.8;
+    padding: 0 0 0 0.5%;
+}
+
+#formulario {
+    border: solid rgb(0,0,0);
+    width: 46%;
+    line-height: 1.8;
+    padding: 0 0 0 0.5%;
+    /* background-color: rgb(0,0,0); */
+}
+
+#PainelDisciplinas {
+    /* border: solid rgb(0, 0, 0); */
+    width: 100%;
+}
+
+#ocorrencias {
+    border: solid rgb(0, 0, 0);
+    overflow-y: auto;
+    width: 25%;
+    padding: 0% 0% 0% 0.5%;
+    line-height: 1.7;
+}
+
+#tabela {
+    /* border: solid rgb(0, 0, 0); */
+    background-color: rgb(200, 200, 200);
+    min-width: 1480px;
+    width: 100vw;
+    display: flex;
+}
+
+.horario {
+    background-color: rgb(238, 238, 238);
+    border-bottom-color: rgb(0, 0, 0);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-collapse: separate;
+    border-image-outset: 0;
+    border-image-repeat: stretch;
+    border-image-slice: 100%;
+    border-image-source: none;
+    border-image-width: 1;
+    border-left-color: rgb(0, 0, 0);
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-right-color: rgb(0, 0, 0);
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-top-color: rgb(0, 0, 0);
+    border-top-style: solid;
+    border-top-width: 1px;
+    box-sizing: border-box;
+    direction: ltr;
+    display: table;
+    font-family: Arial, Verdana, Helvetica, sans-serif;
+    min-height: 470.375px;
+    height: auto;
+    text-indent: 0px;
+    min-width: 75%;
+    width: 75vw;
+    z-index: 1;
+    -webkit-border-horizontal-spacing: 2px;
+    -webkit-border-vertical-spacing: 2px;
+}
+
+th {
+    background-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(0, 0, 0);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-collapse: separate;
+    border-image-outset: 0;
+    border-image-repeat: stretch;
+    border-image-slice: 100%;
+    border-image-source: none;
+    border-image-width: 1;
+    border-left-color: rgb(0, 0, 0);
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-right-color: rgb(0, 0, 0);
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-top-color: rgb(0, 0, 0);
+    border-top-style: solid;
+    border-top-width: 1px;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    direction: ltr;
+    display: table-cell;
+    font-family: Arial, Verdana, Helvetica, sans-serif;
+    font-weight: 700;
+    height: 26.375px;
+    padding-bottom: 3.2px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 3.2px;
+    text-align: center;
+    text-indent: 0px;
+    vertical-align: middle;
+    width: 122px;
+    z-index: 1;
+}
+
+td {
+    border-bottom-color: rgb(204, 204, 204);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-collapse: separate;
+    border-image-outset: 0;
+    border-image-repeat: stretch;
+    border-image-slice: 100%;
+    border-image-source: none;
+    border-image-width: 1;
+    border-left-color: rgb(204, 204, 204);
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-right-color: rgb(204, 204, 204);
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-top-color: rgb(204, 204, 204);
+    border-top-style: solid;
+    border-top-width: 1px;
+    box-sizing: border-box;
+    direction: ltr;
+    display: table-cell;
+    font-family: Arial, Verdana, Helvetica, sans-serif;
+    height: 22px;
+    text-align: center;
+    text-indent: 0px;
+    vertical-align: middle;
+    width: 122px;
+    z-index: 1;
+}
+
+#anotacoes {
+    border: solid rgb(0, 0, 0);
+    min-width: 23.5%;
+    width: 25vw;
+    height: auto;
+    padding: 1% 0% 0% 1%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}

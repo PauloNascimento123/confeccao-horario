@@ -1,0 +1,7 @@
+/*Resetar os formatos padrões que já vem no HTML*/
+/* O (*) é para selecionar todas as tags do HTML. */
+* {
+    margin: 0;
+    padding: 0; /*Espaçamento interno*/
+    box-sizing: border-box;
+}
